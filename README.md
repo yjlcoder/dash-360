@@ -5,7 +5,7 @@
 This tool helps you convert a 360° videos into a **tile-based, quality-adaptive,
 MPEG-DASH streamable** video. The manifest file (MPD) uses the spatial
 relationship description (SRD) feature, which was introduced in the second
-amendment of DASH standard part 1, 23009-1:2014\[1\].
+amendment of DASH standard part 1, 23009-1:2014.
 Click [here](https://dl.acm.org/doi/10.1145/2910017.2910606) to read more.
 
 ## Installation:
