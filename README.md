@@ -36,10 +36,10 @@ optional arguments:
 
 ## Common Errors
 
-#### Conflicting stream par values in Adaptation Set
+### Conflicting stream par values in Adaptation Set
 All qualities for one tile should have the same aspect ratio.
 
-#### Width (or Height) not divisible by 2
+### Width (or Height) not divisible by 2
 FFMpeg requires video width and height are even numbers. In our case, the
  width and height of each resolution for each tile should be even numbers.
 
