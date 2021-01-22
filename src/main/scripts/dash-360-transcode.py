@@ -61,10 +61,10 @@ def transcode(src: str, dst: str, config: dict):
             output_stream_num += 1
 
         # Video Codec: AVC
-        map_params.extend(["-vcodec", "libx264", "-preset", "medium"])
-        for quality_name, (quality_id, resolution, bitrate) in qualities[tile_ind].items():
+        map_params.extend(["-vcodec", "libx265", "-preset", "medium"])
+        for (quality_name, (quality_id, resolution, bitrate)), output_stream in zip(qualities[tile_ind].items(), output_streams):
             map_params.extend(
-                ["-b:v:%d" % quality_id, bitrate, "-s:v:%d" % quality_id, resolution])
+                ["-b:v:%s" % output_stream, bitrate, "-s:v:%s" % output_stream, resolution])
         # Extra encoding parameters
         map_params.extend(
             ["-bf", "16", "-keyint_min", str(config["keyint_min"]), "-g", str(config["keyint"]), "-sc_threshold",
@@ -73,7 +73,7 @@ def transcode(src: str, dst: str, config: dict):
         adaptation_set = 'id=%d,descriptor=<SupplementalProperty schemeIdUri="urn:mpeg:dash:srd:2014" value="%s"/>,streams=%s' % (tile_ind, config["srd_values"][tile_ind], ",".join(output_streams))
         adaptation_sets.append(adaptation_set)
     # MPD format parameters
-    params.extend(["-use_timeline", "1", "-use_template", "1"])
+    params.extend(["-use_timeline", "1", "-use_template", "1", "-seg_duration", "1"])
     adaptation_sets_params = ["-adaptation_sets", " ".join(adaptation_sets)]
 
     command = ["ffmpeg", "-i", src, "-filter_complex", ffmpeg_filter, *params, *adaptation_sets_params, "-f", "dash", dst]
