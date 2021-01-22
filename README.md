@@ -4,8 +4,8 @@
 
 This tool helps you convert a 360° videos into a **tile-based, quality-adaptive,
 MPEG-DASH streamable** video. The manifest file (MPD) uses the spatial
-relationship description (SRD) feature, which wasintroduced in the second
-amendment of DASH standard part 1, 23009-1:2014\[1\].
+relationship description (SRD) feature, which was introduced in the second
+amendment of DASH standard part 1, 23009-1:2014.
 Click [here](https://dl.acm.org/doi/10.1145/2910017.2910606) to read more.
 
 ## Installation:
@@ -36,10 +36,10 @@ optional arguments:
 
 ## Common Errors
 
-#### Conflicting stream par values in Adaptation Set
+### Conflicting stream par values in Adaptation Set
 All qualities for one tile should have the same aspect ratio.
 
-#### Width (or Height) not divisible by 2
+### Width (or Height) not divisible by 2
 FFMpeg requires video width and height are even numbers. In our case, the
  width and height of each resolution for each tile should be even numbers.
 
